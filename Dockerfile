@@ -41,7 +41,11 @@ RUN wget --quiet https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/t
 
 # Filemgr-linux
 
-RUN apt-get install -y nautilus
+RUN wget http://tools.ufile.ucloud.com.cn/filemgr-linux64.tar.gz \
+    && tar xvzf filemgr-linux64.tar.gz \
+    && cd filemgr-linux64 \
+    && mv filemgr-linux64 filemgr \
+    && mv filemgr /usr/local/bin
 
 
 
@@ -54,4 +58,4 @@ ENV UNZIP_HOME=/usr/bin/unzip
 ENV ANSIBLE_HOME=/etc/ansible
 ENV PYTHON_HOME=/usr/bin/python
 ENV TERRAFORM_HOME=/usr/bin/terraform
-ENV NAUTILUS_HOME=/usr/bin/nautilus
+ENV FILEMGR_HOME=/usr/bin/filemgr-linux64
